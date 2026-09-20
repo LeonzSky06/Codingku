@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codingku — Belajar Coding Jadi Mudah</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#07152f,#101b45 45%,#25104a);
+  color:#eef4ff;line-height:1.6;
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(5,14,34,.88);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(120,160,255,.18)
+}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:25px;font-weight:800;color:#fff}
+.logo span{color:#4da3ff}
+nav{display:flex;gap:22px}
+nav a{color:#b9c8e8;font-weight:600}
+nav a:hover{color:#58aaff}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}
+
+.hero{
+  padding:75px 0 55px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center
+}
+.badge{
+  display:inline-block;padding:8px 14px;border-radius:30px;
+  background:#182d65;color:#6cb5ff;border:1px solid #2d66bd;font-weight:bold
+}
+h1{font-size:clamp(40px,6vw,68px);line-height:1.05;margin:18px 0}
+h1 span{color:#5bb1ff}
+.hero p{font-size:18px;color:#b9c8e8;max-width:650px}
+.buttons{display:flex;gap:13px;margin-top:25px;flex-wrap:wrap}
+.btn{
+  border:0;border-radius:12px;padding:13px 20px;cursor:pointer;
+  font-weight:800;display:inline-block
+}
+.primary{background:linear-gradient(90deg,#1688ff,#6a5cff);color:white}
+.secondary{background:#101f45;border:1px solid #31548f;color:#dbe8ff}
+.btn:hover{transform:translateY(-2px)}
+
+.hero-card{
+  min-height:300px;border-radius:25px;padding:28px;
+  background:linear-gradient(145deg,#102f6e,#281657);
+  border:1px solid #315da8;box-shadow:0 20px 60px rgba(0,0,0,.3)
+}
+.code-window{background:#071126;border-radius:15px;padding:20px;border:1px solid #284675}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:#58749f}
+pre{margin-top:18px;white-space:pre-wrap;color:#9bd0ff;font-size:14px}
+
+section{padding:55px 0}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title h2{font-size:34px}
+.section-title p{color:#aabbdc;margin-top:6px}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{
+  background:rgba(13,30,65,.9);border:1px solid #294b80;border-radius:18px;
+  padding:22px;transition:.2s
+}
+.card:hover{transform:translateY(-5px);border-color:#4d9cff}
+.icon{font-size:35px;margin-bottom:10px}
+.card h3{margin-bottom:6px}
+.card p{color:#aabbdc;font-size:14px}
+.card button{margin-top:16px;width:100%;border:0;border-radius:10px;padding:10px;background:#173d78;color:white;cursor:pointer}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{padding:22px;background:#0b1d40;border:1px solid #284879;border-radius:16px}
+.number{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#287fe5;font-weight:bold;margin-bottom:13px}
+.step p{color:#aabbdc;font-size:14px}
+
+.practice{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  background:#091936;border:1px solid #294b80;border-radius:20px;padding:20px
+}
+textarea{
+  width:100%;min-height:260px;resize:vertical;background:#050d1c;color:#a8d7ff;
+  border:1px solid #284675;border-radius:12px;padding:15px;font-family:monospace
+}
+.preview{
+  min-height:260px;background:white;color:#111;border-radius:12px;padding:20px
+}
+.run{margin-top:12px;background:#1887ff;color:white;border:0;border-radius:10px;padding:11px 18px;font-weight:bold;cursor:pointer}
+
+.guide{
+  max-width:800px;margin:auto;background:#0b1d40;border:1px solid #294b80;
+  border-radius:20px;padding:25px
+}
+.guide li{margin:13px 0;color:#c4d2eb}
+footer{margin-top:40px;padding:30px 0;border-top:1px solid #203b68;text-align:center;color:#879bc0}
+
+@media(max-width:800px){
+  nav{display:none}
+  .menu{display:block}
+  .hero{grid-template-columns:1fr;padding-top:45px}
+  .grid,.steps{grid-template-columns:1fr 1fr}
+  .practice{grid-template-columns:1fr}
+}
+@media(max-width:500px){
+  .grid,.steps{grid-template-columns:1fr}
+  h1{font-size:42px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">💻 Coding<span>ku</span></a>
+    <nav>
+      <a href="#materi">Materi</a>
+      <a href="#cara">Cara Pakai</a>
+      <a href="#latihan">Latihan</a>
+      <a href="#tentang">Tentang</a>
+    </nav>
+    <button class="menu" onclick="alert('Gunakan menu di bawah halaman untuk belajar 😊')">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero container">
+  <div>
+    <span class="badge">🚀 Belajar coding untuk pemula</span>
+    <h1>Belajar Coding<br><span>Jadi Lebih Mudah.</span></h1>
+    <p>Pelajari coding sedikit demi sedikit dengan penjelasan sederhana, contoh kode, dan latihan langsung. Cocok untuk kamu yang baru mulai.</p>
+    <div class="buttons">
+      <a class="btn primary" href="#materi">📚 Mulai Belajar</a>
+      <a class="btn secondary" href="#cara">❓ Cara Menggunakan</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="code-window">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <pre>&lt;h1&gt;Halo, Codingku!&lt;/h1&gt;
+
+&lt;p&gt;Hari ini aku belajar coding.&lt;/p&gt;
+
+<button style="margin-top:15px;background:#176fd1;color:white;border:0;padding:8px 12px;border-radius:8px">▶ Jalankan kode</button></pre>
+    </div>
+  </div>
+</section>
+
+<section id="materi">
+  <div class="container">
+    <div class="section-title">
+      <h2>📚 Pilih Materi</h2>
+      <p>Mulai dari bahasa yang ingin kamu pelajari.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="icon">🧱</div><h3>HTML</h3><p>Belajar membuat struktur halaman website.</p><button onclick="showLesson('HTML')">Mulai HTML →</button></div>
+      <div class="card"><div class="icon">🎨</div><h3>CSS</h3><p>Membuat website menjadi lebih bagus dan berwarna.</p><button onclick="showLesson('CSS')">Mulai CSS →</button></div>
+      <div class="card"><div class="icon">⚡</div><h3>JavaScript</h3><p>Membuat website bisa melakukan berbagai aksi.</p><button onclick="showLesson('JavaScript')">Mulai JavaScript →</button></div>
+      <div class="card"><div class="icon">🐍</div><h3>Python</h3><p>Belajar bahasa pemrograman dengan sintaks sederhana.</p><button onclick="showLesson('Python')">Mulai Python →</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="cara">
+  <div class="container">
+    <div class="section-title">
+      <h2>🧭 Cara Menggunakan Codingku</h2>
+      <p>Ikuti 4 langkah sederhana ini.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="number">1</div><h3>Pilih Materi</h3><p>Pilih HTML, CSS, JavaScript, atau Python.</p></div>
+      <div class="step"><div class="number">2</div><h3>Baca</h3><p>Baca penjelasan dan lihat contoh kode.</p></div>
+      <div class="step"><div class="number">3</div><h3>Praktik</h3><p>Ubah contoh kode dan lihat hasilnya.</p></div>
+      <div class="step"><div class="number">4</div><h3>Latihan</h3><p>Ulangi dan buat proyek kecil sendiri.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="latihan">
+  <div class="container">
+    <div class="section-title">
+      <h2>💻 Coba Coding Langsung</h2>
+      <p>Ubah kode di sebelah kiri, lalu tekan Jalankan.</p>
+    </div>
+    <div class="practice">
+      <div>
+        <textarea id="editor"><!DOCTYPE html>
+<html>
+<body>
+  <h1>Halo Codingku!</h1>
+  <p>Aku sedang belajar coding 🚀</p>
+</body>
+</html></textarea>
+        <button class="run" onclick="runCode()">▶ Jalankan</button>
+      </div>
+      <div>
+        <div class="preview" id="preview">Hasil kode akan muncul di sini.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tentang">
+  <div class="container">
+    <div class="section-title"><h2>💡 Tips Belajar</h2></div>
+    <div class="guide">
+      <ol>
+        <li>Jangan takut kalau kode pertama belum berhasil.</li>
+        <li>Pelajari satu materi sampai paham sebelum pindah.</li>
+        <li>Sering praktik lebih membantu daripada hanya membaca.</li>
+        <li>Coba ubah contoh kode untuk melihat apa yang terjadi.</li>
+        <li>Mulai dari proyek kecil, misalnya halaman profil atau kalkulator.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>💻 Codingku</strong><br>
+    Belajar Coding, Jadi Bisa! 🚀<br><br>
+    © 2026 Codingku
+  </div>
+</footer>
+
+<script>
+function showLesson(name){
+  alert("Materi " + name + " akan dimulai! 📚\n\nUntuk sekarang, kamu bisa belajar lewat contoh dan latihan di halaman ini.");
+}
+function runCode(){
+  const code=document.getElementById("editor").value;
+  document.getElementById("preview").innerHTML=code;
+}
+</script>
+</body>
+</html>
